@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Riptide - Music Player</title>
+
+
+<style>
+
+body {
+
+    background-image:url("https://file.garden/Z_Zkhskjxktxt43S/Riptide/bg.png");
+    background-size:cover;
+    background-attachment:fixed;
+
+    font-family:sans-serif;
+    text-align:center;
+    color:white;
+
+}
+
+
+h1 {
+
+    font-size:50px;
+
+}
+
+h2 {
+    margin-bottom:50px;
+}
+
+.margin {
+    margin-bottom:50px;
+}
+
+input {
+
+    width:60%;
+    height:35px;
+
+    border-radius:40px;
+    border:none;
+
+    padding-left:20px;
+
+    font-size:16px;
+
+}
+
+
+button {
+
+    margin:20px;
+
+    width:120px;
+    height:35px;
+
+    border-radius:40px;
+
+    border:none;
+
+    background:#5791de;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+button:hover {
+
+    transform:scale(1.1);
+
+}
+
+
+
+.player {
+
+    width:700px;
+
+    margin:30px auto;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:#0008;
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:center;
+
+}
+
+
+
+.player img {
+
+    width:200px;
+
+    height:200px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+}
+
+
+
+.info {
+
+    text-align:left;
+
+}
+
+
+
+.info h2 {
+
+    margin:0;
+
+    font-size:35px;
+
+}
+
+
+
+.songlist {
+
+    width:650px;
+
+    margin:auto;
+
+}
+
+
+
+.song {
+
+    background:#ffffff22;
+
+    padding:15px;
+
+    margin:10px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    text-align:left;
+
+}
+
+
+
+.song:hover {
+
+    background:#ffffff44;
+
+}
+
+
+
+audio {
+
+    width:300px;
+
+}
+
+a {
+    color:white;
+}
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<h3 style="letter-spacing: 0.5em;">Riptide Docs</h3>
+<h2>How to create a Riptide Playlist</h2>
+
+<p>Step 1. Upload assets</p>
+
+go to <a href="https://filegarden.com" target = "_blank">FileGarden</a> and make a new directory (NO SPACES IN THE NAME), then upload your songs and album covers (1 cover per song)
+<div class="margin"></div>
+<p>2. Create a riptide.json</p>
+go to <a href="jason.html" target = "_blank">Our Json Editor</a> and add the urls of the song files in the Audio URL section, and add the urls of the cover art in the cover URL section
+<br><br>(ex. https://file.garden/user/test/flyhigh.mp3)
+<br>(ex. https://file.garden/user/test/flyhighart.png)
+<div class="margin"></div>
+<p>4. Upload riptide</p>
+download the json file from the editor and import it in the same place you put all of the songs and art, then copy the preview link<br><br>(ex. https://file.garden/user/test/riptide.json)
+<div class="margin"></div>
+<p>5. Encode</p>
+
+go to <a href="encode.html" target = "_blank">Our Encode</a> and get the code, you can put this code in riptide to play the songs
+
+</body>
+
+</html>
