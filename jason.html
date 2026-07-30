@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Riptide JSON Maker</title><style>
+body{font-family:Arial,sans-serif;
+    background-image:url("https://file.garden/Z_Zkhskjxktxt43S/Riptide/bg.png");
+    background-size:cover;
+    background-attachment:fixed;;color:#fff;margin:0;padding:30px}h1{text-align:center}#controls{text-align:center;margin-bottom:20px}button{padding:10px 18px;border:none;border-radius:8px;background:#4ea8de;color:#fff;cursor:pointer;margin:5px}.card{display:flex;gap:20px;background:#ffffff18;padding:15px;border-radius:12px;margin:15px auto;max-width:900px}.left{flex:1}.right{width:170px;text-align:center}input{width:100%;padding:8px;border-radius:6px;border:none;margin:6px 0}img{width:150px;height:150px;object-fit:cover;border-radius:10px;background:#333}
+</style></head><body><h1>🌊 Riptide JSON Maker</h1><div id=controls><button onclick=addSong()>+ Add Song</button><button onclick=removeSong()>- Remove Song</button><button onclick=copyJSON()>📋 Copy JSON</button><button onclick=downloadJSON()>💾 Download riptide.json</button></div><div id=songs></div><script>
+let count=0;
+function addSong(d={}){count++;let c=document.createElement('div');c.className='card';c.innerHTML=`<div class=left><h2>Song ${count}</h2><input class=name placeholder="Song Name"><input class=author placeholder=Author><input class=url placeholder="Audio URL"><input class=cover placeholder="Cover URL"></div><div class=right><img><p>Cover Preview</p><audio controls style="width:150px"></audio></div>`;songs.appendChild(c);let cover=c.querySelector('.cover'),img=c.querySelector('img'),url=c.querySelector('.url'),aud=c.querySelector('audio');function u(){img.src=cover.value;aud.src=url.value;}cover.oninput=u;url.oninput=u;}
+function removeSong(){if(songs.lastElementChild){songs.removeChild(songs.lastElementChild);count--;}}
+function build(){let o={Amount:count};[...document.querySelectorAll('.card')].forEach((c,i)=>{o[String(i+1)]=[{Name:c.querySelector('.name').value,Author:c.querySelector('.author').value,URL:c.querySelector('.url').value,Cover:c.querySelector('.cover').value}]});return JSON.stringify(o,null,2);}
+function downloadJSON(){let b=new Blob([build()],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='riptide.json';a.click();}
+async function copyJSON(){await navigator.clipboard.writeText(build());alert('Copied!');}
+addSong();
+</script></body></html>
