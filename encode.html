@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Riptide Encoder</title>
+
+
+<style>
+
+body {
+
+font-family:sans-serif;
+
+text-align:center;
+
+padding:40px;
+
+}
+
+
+input {
+
+width:70%;
+
+height:35px;
+
+padding-left:15px;
+
+border-radius:30px;
+
+border:1px solid gray;
+
+}
+
+
+button {
+
+margin:20px;
+
+padding:12px 40px;
+
+border-radius:30px;
+
+border:none;
+
+background:#5791de;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+.box {
+
+background:#eee;
+
+color:black;
+
+padding:20px;
+
+margin:20px;
+
+border-radius:15px;
+
+word-break:break-all;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>Riptide Encoder</h1>
+
+<input id="url"
+placeholder="https://file.garden/user/folder/">
+
+
+
+<br>
+
+
+<button onclick="encode()">
+Encode
+</button>
+
+
+
+<div class="box" id="output">
+Code appears here
+</div>
+
+<a href="https://filegarden.com/" target = "_blank">Find file.garden here</a>
+
+
+<script>
+
+
+const prefix =
+"https://file.garden/";
+
+
+const alphabet =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
+
+
+function encodeText(text) {
+
+
+    let bytes =
+    new TextEncoder().encode(text);
+
+
+    let bits="";
+
+
+    for(let b of bytes) {
+
+        bits +=
+        b.toString(2).padStart(8,"0");
+
+    }
+
+
+    while(bits.length % 6 !== 0) {
+
+        bits += "0";
+
+    }
+
+
+
+    let output="";
+
+
+    for(let i=0;i<bits.length;i+=6) {
+
+
+        output += alphabet[
+            parseInt(bits.substring(i,i+6),2)
+        ];
+
+
+    }
+
+
+    return output;
+
+}
+
+
+
+
+function encode() {
+
+
+    let url =
+    document.getElementById("url").value;
+
+
+
+    if(!url.startsWith(prefix)) {
+
+        alert(
+        "Only File Garden links supported"
+        );
+
+        return;
+
+    }
+
+
+
+    let path =
+    url.substring(prefix.length);
+
+
+
+    document.getElementById("output")
+    .innerText =
+    encodeText(path);
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
